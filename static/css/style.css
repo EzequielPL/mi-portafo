@@ -1291,6 +1291,7 @@ pre code {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
+    top: -30%;
   }
 
   .order-md-first {

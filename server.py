@@ -15,22 +15,28 @@ def sort_stories_by_votes(hnlist):
 def get_noticias():
     page = 1
     hn = []
-    for page in range(4):
+
+    for page in range(1, 3):
+
         url = f"https://news.ycombinator.com/news?p={page}"
-        response = requests.get(url, timeout=1)
+        response = requests.get(url, timeout=5)
         soup = BeautifulSoup(response.text, "html.parser")
         links = soup.select(".titleline")
         subtext = soup.select(".subtext")
         page += 1
+
         for idx, item in enumerate(links):
 
             title = links[idx].getText()
             href = links[idx].get("href", None)
             vote = subtext[idx].select(".score")
+
             if len(vote):
                 points = int(vote[0].getText().replace(" points", ""))
+
                 if points > 99:
                     hn.append({"title": title, "link": href, "votes": points})
+                    
     return sort_stories_by_votes(hn)
 
 
@@ -50,26 +56,26 @@ def blog():
     return render_template("single.html", posts=posts)
 
 
-def write_to_file(data):
-    with open(
-        r"E:\Mis Proyectos Web\database.txt", mode="a", encoding="utf8"
-    ) as database:
-        email = data["email"]
-        subject = data["subject"]
-        message = data["message"]
-        file = database.write(f"\n{email}, {subject}, {message}")
-    return file
+# def write_to_file(data):
+#     with open(
+#         r"E:\Mis Proyectos Web\database.txt", mode="a", encoding="utf8"
+#     ) as database:
+#         email = data["email"]
+#         subject = data["subject"]
+#         message = data["message"]
+#         file = database.write(f"\n{email}, {subject}, {message}")
+#     return file
 
 
 def write_to_csv(data):
     with open(
-        r"E:\Mis Proyectos Web\database.csv", mode="a", encoding="utf8"
+        "/database.csv", mode="a", encoding="utf8", newline=""
     ) as database2:
         email = data["email"]
         subject = data["subject"]
         message = data["message"]
         csv_writer = csv.writer(
-            database2, delimiter=",", newline="", quotechar="|", quoting=1
+            database2, delimiter=",", quotechar="|", quoting=1
         )
         csv_writer.writerow([email, subject, message])
 
