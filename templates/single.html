@@ -33,7 +33,7 @@
       <a class="navbar-brand" href="index.html">Ezequiel</a>
       <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
         data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
+        <span class="oi oi-menu"></span> Menú
       </button>
 
       <div class="collapse navbar-collapse" id="ftco-nav">
@@ -49,29 +49,36 @@
       </div>
     </div>
   </nav>
-  <section class="hero-wrap js-fullheight" style="background-image: url('static/images/bg_1.jpg');"
+
+  <section class="hero-wrap js-fullheight" style="background-image: url('static/images/blog_bg.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
-          <h1 class="mb-3 bread">Mi Blog</h1>
+          <img src="static/images/scraped_news.png" class="img_logo">
+          <h1 class="mb-3 bread">Scraped News</h1>
           <!--<p class="breadcrumbs"><span class="mr-2"><a href="index.html"><i 
                   class="ion-ios-arrow-forward"></i></a></span> -->
         </div>
       </div>
     </div>
+    <div class='air air1'></div>
+    <div class='air air2'></div>
+    <div class='air air3'></div>
+    <div class='air air4'></div>
+
   </section>
 
   <section class="ftco-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 ftco-animate">
-          <h2 class="mb-3">NOTICIAS DESTACADAS DEL DÍA</h2>
+          <h2 class="mb-3">NOTICIAS DESTACADAS</h2>
           {% for post in posts %}
-          <div class="blog-entry mb-4 p-3 bg-dark text-light rounded">
-            <h3><a href="{{ post.link }}" target="_blank" class="text-warning">{{ post.title }}</a></h3>
-            <p>⭐ {{ post.votes }} puntos</p>
+          <div class="blog-entry mb-4 p-3 text-light rounded" id="HKposts">
+            <h3><a href="{{ post.link}}" target="_blank" class="text-warning">{{ post.title }}</a></h3>
+            <p>⭐ {{ post.votes }} Puntos</p>
           </div>
           {% endfor %}
         </div>
@@ -83,13 +90,13 @@
             {% for comment in comments %}
             <li class="comment">
               <div class="vcard bio">
-                <img src="static/images/person_1.jpg" alt="Image placeholder">
+                <img src="static/images/home_1.png" alt="Image placeholder">
               </div>
               <div class="comment-body">
                 <h3>{{ comment.name }}</h3>
                 <div class="meta">Comentario reciente</div>
                 <p>{{ comment.message }}</p>
-                <p><a href="#" class="reply">Reply</a></p>
+                <!-- <p><a href="#" class="reply">Reply</a></p> -->
               </div>
             </li>
             {% endfor %}
@@ -101,7 +108,7 @@
 
             <div class="comment-form-wrap pt-5">
               <h3 class="mb-5">Deja un comentario</h3>
-              <form action="enviar_comentario" class="p-5 bg-dark" method="post">
+              <form action="{{url_for('enviar_comentario')}}" class="p-5 bg-dark" method="post">
                 <div class="form-group">
                   <label for="name">Nombre *</label>
                   <input name="name" type="text" class="form-control" id="name" value="{{name}}">
@@ -112,7 +119,7 @@
                 </div>
                 <div class="form-group">
                   <label for="message">Mensaje</label>
-                  <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  <textarea name="message" id="message" cols="100" rows="10" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                   <input type="submit" value="Postear comentario" class="btn py-3 px-4 btn-primary">
@@ -121,18 +128,7 @@
               </form>
             </div>
         </div>
-
       </div> <!-- .col-md-8 -->
-      <div class="col-lg-4 sidebar ftco-animate">
-        <div class="sidebar-box">
-          <form action="#" class="search-form">
-            <div class="form-group">
-              <span class="icon icon-search"></span>
-              <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
   </section> <!-- .section -->
 
@@ -142,7 +138,9 @@
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
             <h2 class="ftco-heading-2">Sobre Este Blog</h2>
-            <p>--------------TBD.</p>
+            <p>Este espacio es donde comparto
+              publicaciones sobre tecnología:
+              código, ideas y curiosidades…</p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
               <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
               <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>

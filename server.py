@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests
 import csv
-
 from bs4 import BeautifulSoup
 
 
@@ -92,9 +91,9 @@ def submit_form():
 
 
 def save_comments(name, message):
-    with open("/comentarios.csv", mode="a", encoding="utf8", newline="") as file:
-        csv_writer = csv.writer(file, delimiter=",", quotechar="|", quoting=1)
-        csv_writer.writerow([name, message])
+    with open("comentarios.csv", mode="a", encoding="utf8", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([name, message])
 
 
 @app.route("/enviar_comentario", methods=["POST"])
@@ -109,10 +108,10 @@ def load_comments():
     comments = []
     try:
         with open("comentarios.csv", mode="r", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
+            reader = csv.reader(file)
             for row in reader:
-                if row["name"] == str(name):
-                    comments.append({"name": row["name"], "message": row["message"]})
+                if len(row) >= 2:
+                    comments.append({"name": row[0], "message": row[1]})
     except FileNotFoundError:
         pass
     return comments

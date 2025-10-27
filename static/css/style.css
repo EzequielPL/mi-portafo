@@ -2409,11 +2409,13 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  position-area: initial;
+
 }
 
 .form-text {
   display: block;
-  margin-top: 0.25rem;
+  left: auto;
 }
 
 .form-row {
@@ -7545,7 +7547,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: gray !important;
 }
 
 a.bg-dark:hover,
@@ -12438,6 +12440,8 @@ h5,
   position: inherit;
   background-size: cover;
   background-repeat: no-repeat;
+  border-image: linear-gradient(to bottom, rgba(0, 0, 0, 10), rgba(0, 0, 0, 0));
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 20), rgba(0, 0, 0, 0));
 }
 
 .hero-wrap .overlay {
@@ -13933,4 +13937,86 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+}
+
+#HKposts {
+  background-color: var(--gray-dark);
+  background-size: 150px;
+}
+
+
+.hero-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #3586ff;
+  overflow: hidden;
+}
+
+.hero-wrap .air {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("/static/images/wave.png");
+  background-size: 1000px 100px;
+}
+
+.hero-wrap .air.air1 {
+  animation: wave 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+  color: #002752;
+}
+
+.hero-wrap .air.air2 {
+  animation: wave2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+.hero-wrap .air.air3 {
+  animation: wave 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+
+.hero-wrap .air.air4 {
+  animation: wave2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0px;
+  }
+
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    background-position-x: 0px;
+  }
+
+  100% {
+    background-position-x: -1000px;
+  }
+}
+
+.img_logo {
+  max-width: 15%;
+  filter: drop-shadow(5);
 }
