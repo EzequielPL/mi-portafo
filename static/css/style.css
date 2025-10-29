@@ -14020,3 +14020,30 @@ textarea.form-control {
   max-width: 15%;
   filter: drop-shadow(5);
 }
+
+.blog-entry {
+  max-width: 800px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-entry:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.block-20 {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.text p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .blog-entry {
+    padding: 1rem;
+  }
+}
